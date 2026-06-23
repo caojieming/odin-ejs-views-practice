@@ -1,7 +1,11 @@
 <html>
+  <head>
+    <!-- set styling file -->
+    <link rel="stylesheet" href="/styles.css">
+    <title>Homepage</title>
+  </head>
   <body>
-    <%= message %>
-    <!-- the below, when inputting to the console "locals.foo" or "foo", will get different errors -->
-    <%= locals.foo %>
+    <%- include('navbar', {links: links}) %>
   </body>
+  <%- include('footer') %>
 </html>

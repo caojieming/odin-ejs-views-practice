@@ -9,12 +9,27 @@ const path = require("node:path");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// setup path to static assets
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
 
 
-// the first argument of res.render is “a template called index in the specified folder above”, the second argument is an object of variables that are to be made available to that specific template
+
+const links = [
+  { href: "/", text: "Home" },
+  { href: "/about", text: "About" },
+];
+const users = ["Rose", "Cake", "Biff"];
+
+// the first argument of res.render is "a template called index in the specified folder above", the second argument is an object of variables that are to be made available to that specific template
 app.get("/", (req, res) => {
-  res.render("index", { message: "EJS rocks!" });
+  res.render("index", { links: links });
 });
+
+app.get("/about", (req, res) => {
+  res.render("about", { users: users });
+});
+
 
 
 
